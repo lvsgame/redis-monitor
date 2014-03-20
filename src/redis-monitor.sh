@@ -1,6 +1,4 @@
 #!/bin/bash
-tar -zxf monitor.tar.gz
-
 mkdir -p /usr/local/redis-monitor
 \cp -rf monitor/* /usr/local/redis-monitor
 \cp -rf redis7009.conf /etc/redis/
