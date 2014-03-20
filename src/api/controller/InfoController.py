@@ -1,5 +1,6 @@
 from decimal import Decimal
 from BaseController import BaseController
+from api.util import settings
 import tornado.ioloop
 import tornado.web
 import re
@@ -11,7 +12,8 @@ class InfoController(BaseController):
         """Serves a GET request.
         """
         server = self.get_argument("server").split(':')
-        
+        server.append(settings.find_redis(server[0], int(server[1]))["password"])
+
         redis_info = self.getStatsPerServer(server)
         databases=[]
 

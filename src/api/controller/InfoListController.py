@@ -12,8 +12,8 @@ class InfoListController(BaseController):
         for server in settings.get_redis_servers():
             if(group !=None and group!='all' and server['group'] != group):
                 continue;
-            
-            info=self.getStatsPerServer((server['server'],server['port']))
+           
+            info=self.getStatsPerServer((server['server'],server['port'],server['password']))
             
             info.update({"addr" : info.get("server_name")[0].replace(".", "_") +  str(info.get("server_name")[1]),
             })

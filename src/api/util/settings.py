@@ -17,6 +17,13 @@ def get_redis_servers():
         data.append(server)
     return data
 
+def find_redis(ip, port):
+    config = get_settings()
+    servers = config["RedisServers"]
+    for server in servers:
+        if (server["server"] == ip and server["port"] == port):
+            return server
+
 def get_redis_alerturi():
     config = get_settings()
     return config["sms_alert"]
